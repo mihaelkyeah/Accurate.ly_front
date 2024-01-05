@@ -5,15 +5,26 @@
     --accurately-lite-2-rgb: rgb(177,234,229);
     --accurately-dark-rgb: rgb(2,150,125);
     --accurately-logo-rgb: rgb(4,125,104);
+    --accurately-nav-rgb: rgb(4,100,83);
     --accurately-r: 2;
     --accurately-g: 200;
     --accurately-b: 167;
+
+    --footer-height: 40px;
 }
 
 /* === GLOBAL === */
 
 body {
     font-family: 'Open Sans', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+footer {
+    height: var(--footer-height);
+}
+
+/* General purpose container: 100% height minus footer */
+.full-height-minus-footer {
+    min-height: calc(100vh - var(--footer-height))
 }
 
 /* Theme background */
@@ -27,6 +38,19 @@ body {
 .text-accurately-lite-1 { color: var(--accurately-lite-1-rgb) }
 .text-accurately-lite-2 { color: var(--accurately-lite-2-rgb) }
 .text-accurately-dark { color: var(--accurately-dark-rgb) }
+
+/* Theme button */
+.btn-accurately {
+    background: var(--accurately-logo-rgb);
+    color: white
+}
+.btn-accurately:hover {
+    background: var(--accurately-nav-rgb);
+    color: white
+}
+
+/* Small labels for forms */
+.label-small { font-size: 10.5pt }
 
 /* === ELEMENTS AND SECTIONS === */
 
@@ -43,6 +67,39 @@ body {
     text-transform: uppercase
 }
 
+/* Login bar */
+.bg-accurately-loginbar {
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(var(--accurately-r),var(--accurately-g),var(--accurately-b),0.37),
+        rgba(var(--accurately-r),var(--accurately-g),var(--accurately-b),0.12)
+    );
+}
+/* Login background */
+.login-background {
+    position: relative;
+    overflow: hidden;
+}
+.login-background img {
+    height: calc(100vh - var(--footer-height));
+    object-position: center;
+    object-fit: cover;
+    z-index: 1;
+}
+.overlay-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-image: linear-gradient(
+        to right,
+        rgba(var(--accurately-r),var(--accurately-g),var(--accurately-b),0.5),
+        rgba(var(--accurately-r),var(--accurately-g),var(--accurately-b),0.25)
+    );
+}
+
 /* Nav */
 .bg-accurately-nav {
     background: rgba(
@@ -56,10 +113,23 @@ body {
 .nav-item {
     border-radius: 1ch;
     padding: 1ch 3ch;
+    color: var(--accurately-nav-rgb);
+    font-weight: 600
 }
 .nav-item:hover {
     background: var(--accurately-lite-1-rgb);
     color: #f7f7f7;
-    font-weight: bold
+    font-weight: 700
 }
 .dropdown-item:hover { background: var(--accurately-lite-2-rgb) }
+
+/* Utilities and animations */
+.appear {
+    animation: appear;
+    animation-timing-function: linear;
+    animation-duration: 500ms;
+}
+@keyframes appear {
+    0% { opacity: 1%; }
+    100% { opacity: 100%; }
+}

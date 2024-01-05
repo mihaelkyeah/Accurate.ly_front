@@ -1,5 +1,11 @@
 'use strict'
 
+let maleColor = "#046453"
+let femaleColor = "#fb9bac"
+let teenagersColor = "#40d2be"
+let youngAdultsColor = "#e8bc33"
+let seniorsColor = "#4c6764"
+
 let businesses = [
     {
         id: 1,
@@ -52,14 +58,15 @@ function renderCharts(business) {
         chart: {
             type: 'line'
         },
+        colors: [maleColor, femaleColor],
         series: [
-            {
-                name: 'Female',
-                data: business.femaleData
-            },
             {
                 name: 'Male',
                 data: business.maleData
+            },
+            {
+                name: 'Female',
+                data: business.femaleData
             }
         ],
         xaxis: {
@@ -77,6 +84,7 @@ function renderCharts(business) {
         chart: {
             type: 'donut'
         },
+        colors: [maleColor, femaleColor],
         dataLabels: {
             style: {
                 fontSize: '15pt'
@@ -107,6 +115,7 @@ function renderCharts(business) {
                 data: business.ageData
             }
         ],
+        colors: [maleColor],
         xaxis: {
             category: ["Jan 01","Jan 02","Jan 03","Jan 04","Jan 05","Jan 06","Jan 07","Jan 08","Jan 09","Jan 10","Jan 11","Jan 12","Jan 13","Jan 14","Jan 15","Jan 16","Jan 17","Jan 18","Jan 19","Jan 20","Jan 21","Jan 22","Jan 23","Jan 24","Jan 25","Jan 26","Jan 27","Jan 28","Jan 29","Jan 30","Jan 31"]
         }
@@ -151,7 +160,8 @@ function renderCharts(business) {
             }
         },
         series: [ageCategories.teenagers, ageCategories.youngAdults, ageCategories.adults, ageCategories.seniors],
-        labels: ["Teenagers", "Young adults", "Adults", "Seniors"]
+        labels: ["Teenagers", "Young adults", "Adults", "Seniors"],
+        colors: [teenagersColor, youngAdultsColor, maleColor, seniorsColor]
     }
     let ageTotalChart = new ApexCharts(document.querySelector("#age-chart-total"), ageTotalOptions)
     ageTotalChart.render()

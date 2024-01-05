@@ -11,43 +11,79 @@
     <title>Accurate.ly - Home</title>
 </head>
 <body>
-    <header class="m-0 p-0 bg-accurately-lite-2 w-100 row justify-content-between align-items-end">
-        <div id="banner-logo" class="bg-accurately-logo d-flex flex-column w-30 py-0 px-5 align-items-center">
-            <img src="img/ico/favicon.svg" width="64px" class="img-fluid mt-2">
-            <span class="logo-font text-white">Accurate.ly</span>
-        </div>
-        <div class="w-70 row bg-accurately-nav m-0 p-0">
-            <div class="w-30"></div>
-            <nav class="d-flex flex-column w-70 m-0 p-0">
-                <ul class="navbar-nav d-flex flex-row justify-content-between m-0 p-0">
-                    <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Account
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="account.html">Preferences</a></li>
-                        <li><a class="dropdown-item" href="login.html">Logout</a></li>
+    <div class="full-height-minus-footer">
+
+        <header class="m-0 p-0 bg-accurately-lite-2 w-100 row justify-content-between align-items-end">
+            <div id="banner-logo" class="bg-accurately-logo d-flex flex-column w-30 py-0 px-5 align-items-center">
+                <img src="img/ico/favicon.svg" width="64px" class="img-fluid mt-3">
+                <span class="logo-font text-white">Accurate.ly</span>
+            </div>
+            <div class="w-70 row bg-accurately-nav m-0 p-0">
+                <div class="w-30"></div>
+                <nav class="d-flex flex-column w-70 m-0 p-0">
+                    <ul class="navbar-nav d-flex flex-row justify-content-between m-0 p-0">
+                        <a class="nav-link active nav-item d-flex flex-row align-items-center" aria-current="page" href="index.html">
+                            <li class="nav-link active">Home</li>
+                        </a>
+                        <a class="nav-link nav-item d-flex flex-row align-items-center" href="about.html">
+                            <li class="nav-link">About</li>
+                        </a>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="account.html">Preferences</a></li>
+                            <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                        </ul>
+                        </li>
                     </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+                </nav>
+            </div>
+        </header>
+    
+        <section id="main" class="m-0 p-4">
+            <h1>Home</h1>
+            <div class="row m-0 p-0 align-items-center justify-content-around">
+                <strong class="col-md-3">Viewing data for business:</strong>
+                <div class="col-md-9 col-sm-12">
+                    <select id="business" class="form-control">
+                        <option value="1" class="businessSelectOption">Business 1</option>
+                        <option value="2" class="businessSelectOption">Business 2</option>
+                        <option value="3" class="businessSelectOption">Business 3</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="row mt-4 mb-0 p-0 align-items-center justify-content-around">
+                <h3 class="col-12">Genders</h3>
+                <div class="col-md-6 col-sm-12">
+                    <h6>Through time</h6>
+                    <div id="gender-chart-time"></div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h6>In total</h6>
+                    <div id="gender-chart-total"></div>
+                </div>
+                <h3 class="col-12 mt-4">Ages</h3>
+                <div class="col-md-6 col-sm-12">
+                    <h6>Through time</h6>
+                    <div id="age-chart-time"></div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h6>In total</h6>
+                    <div id="age-chart-total"></div>
+                </div>
+            </div>
+        </section>
 
-    <section id="main" class="m-0 p-0">
+    </div>
 
-    </section>
-
-    <footer>
-
+    <footer class="bg-accurately-logo d-flex flex-row align-items-center px-3">
+        <small class="text-white">Copyright © Francisco Hernández 2024</small>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

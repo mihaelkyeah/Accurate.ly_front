@@ -8,4 +8,3 @@ Originally based on a customer research service which would register the gender 
 Uses:
 * Bootstrap 5 - https://getbootstrap.com/
 * Apex Charts - https://apexcharts.com/
-* SheetJS - https://git.sheetjs.com/SheetJS/sheetjs

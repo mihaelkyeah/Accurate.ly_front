@@ -48,6 +48,11 @@ footer {
     background: var(--accurately-nav-rgb);
     color: white
 }
+.btn-accurately:active, .btn-accurately:focus {
+    background: var(--accurately-lite-1-rgb) !important;
+    color: white !important;
+    border: 1px solid #ffffff77 !important;
+}
 
 /* Small labels for forms */
 .label-small { font-size: 10.5pt }
@@ -116,9 +121,13 @@ footer {
     color: var(--accurately-nav-rgb);
     font-weight: 600
 }
+.nav-link.active {
+    color: #111111dd !important;
+    /* text-decoration: underline !important; */
+}
 .nav-item:hover {
     background: var(--accurately-lite-1-rgb);
-    color: #f7f7f7;
+    color: #f7f7f7 !important;
     font-weight: 700
 }
 .dropdown-item:hover { background: var(--accurately-lite-2-rgb) }

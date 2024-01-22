@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lorem Input</h1>
+    <p>Enter CSV file:</p>
+    <form id="csvForm" method="POST" action="">
+        <input type="file" accept=".csv" id="csvFileInput">
+        <input type="submit" value="Upload CSV">
+    </form>
+
+    <script src="js/importCSV.js"></script>
+    <script>
+        let fileInput = document.querySelector("#csvFileInput")
+        let form = document.querySelector("#csvForm")
+        form.addEventListener("submit", (event) => {
+            event.preventDefault()
+            parseCSV(fileInput)
+        })
+    </script>
+</body>
+</html>

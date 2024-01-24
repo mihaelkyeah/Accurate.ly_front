@@ -1,3 +1,5 @@
+"use strict"
+
 document.querySelector("#email").addEventListener("keydown", () => {
     document.querySelector("#changeEmailButton").removeAttribute("disabled")
 });

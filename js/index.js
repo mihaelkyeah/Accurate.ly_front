@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 let maleColor = "#046453"
 let femaleColor = "#fb9bac"

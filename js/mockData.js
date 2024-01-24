@@ -1,4 +1,4 @@
-const fs = require("fs")
+"use strict"
 
 // Opening hours
 var openingTime = 9
@@ -13,13 +13,47 @@ var openingHours =
 // Customers' age range
 var minimumAge = 12
 var ageRange = 68
+
+// Max customer amount
 var maxCustomers = 10
 
-/**
- * ------------------------------------
- * | Functions
- * ------------------------------------
- */
+function initValuesFromForm(form) {
+    try { openingTime = form["opening-time"].value } catch(e) { console.log(e) }
+    try { closingTime = form["closing-time"].value } catch(e) { console.log(e) }
+    try { firstShiftEnd = form["firstshift-end"].value } catch(e) { console.log(e) }
+    try { secondShiftStart = form["secondshift-start"].value } catch(e) { console.log(e) }
+    try { minimumAge = form["minimum-age"].value } catch(e) { console.log(e) }
+    try { ageRange = form["age-range"].value } catch(e) { console.log(e) }
+    try { maxCustomers = form["age-range"].value } catch(e) { console.log(e) }
+}
+
+function stringifyNumberWithLeadingZeroes(number, leadingZeroAmount) {
+    let numberString = Math.abs(number)+""
+    let leadingZeroes = ""
+
+    if(numberString.length < leadingZeroAmount) {
+        /**
+         * WHY WON'T YOU WORK WHAT HAVE I DONE TO YOU????????
+         * ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+         * 
+         * numberString.padStart(leadingZeroAmount, "0")
+         * 
+         * ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
+         * I tried to use the padStart method as suggested in W3Schools
+         * but it just won't behave properly. 🙃
+         */
+        let i = leadingZeroAmount - numberString.length
+        for(i; i < leadingZeroAmount; i++)
+            leadingZeroes += "0"
+    }
+
+    numberString = leadingZeroes+numberString
+
+    if(number < 0)
+        numberString = "-"+numberString
+    
+    return numberString
+}
 
 function getMonthDays(year) {
     let februaryDays = (year % 4 !== 0) ? 28 : 29
@@ -104,50 +138,3 @@ function sortDataCompare(a, b) {
         return 1
     return 0
 }
-
-function generateCSV(dataJSON, dataField = "data") {
-    let fileString = "DateTime,Gender,Age"
-    dataJSON[dataField].forEach((obj) => {
-        fileString += "\n"+obj["DateTime"]+","+obj["Gender"]+","+obj["Age"]
-    })
-    fs.writeFile("output.csv", fileString, (err) => {
-        if(err) throw err
-    })
-}
-
-
-function stringifyNumberWithLeadingZeroes(number, leadingZeroAmount) {
-    let numberString = Math.abs(number)+""
-    let leadingZeroes = ""
-
-    if(numberString.length < leadingZeroAmount) {
-        /**
-         * WHY WON'T YOU WORK WHAT HAVE I DONE TO YOU????????
-         * ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
-         * 
-         * numberString.padStart(leadingZeroAmount, "0")
-         * 
-         * ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
-         * I tried to use the padStart method as suggested in W3Schools
-         * but it just won't behave properly. 🙃
-         */
-        let i = leadingZeroAmount - numberString.length
-        for(i; i < leadingZeroAmount; i++)
-            leadingZeroes += "0"
-    }
-
-    numberString = leadingZeroes+numberString
-
-    if(number < 0)
-        numberString = "-"+numberString
-    
-    return numberString
-}
-
-/**
- * ------------------------------------
- * | Program
- * ------------------------------------
- */
-let data = generateData()
-generateCSV(data)
